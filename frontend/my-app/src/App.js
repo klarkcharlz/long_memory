@@ -1,13 +1,12 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import StartPage from "./components/StartPage";
-import Menu from "./components/Menu";
-import NotFound from "./components/NotFound";
-import CreateNotification from "./components/CreateNotification";
-import store from "./redux/store";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import StartPage from "./components/StartPage/StartPage";
+import Menu from "./components/Menu/Menu";
+import NotFound from "./components/NotFound/NotFound";
+import CreateNotification from "./components/CreateNotification/CreateNotification";
+import NotificationList from "./components/NotificationsList/NotificationsList";
 
 export default function App() {
     return (
@@ -23,9 +22,11 @@ export default function App() {
                         />
                         <Route
                             path="/create_notification"
-                            element={<CreateNotification
-                                store={store}
-                            />}
+                            element={<CreateNotification/>}
+                        />
+                        <Route
+                            path="/notifications_list"
+                            element={<NotificationList/>}
                         />
                         <Route
                             path="*"

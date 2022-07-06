@@ -1,4 +1,4 @@
-import {SETTITLE, SETDESCRIPTION} from '../types/createNotifications'
+import {SETTITLE, SETDESCRIPTION} from './types'
 
 const initialState = {
     title: "React хуки.",
@@ -6,7 +6,6 @@ const initialState = {
 }
 
 export const createNotificationsReducer = (state = initialState, action) => {
-    console.log("createNotificationsReducer > ", action);
     switch (action.type){
         case SETTITLE:
             return {
@@ -16,7 +15,7 @@ export const createNotificationsReducer = (state = initialState, action) => {
         case SETDESCRIPTION:
             return {
                 ...state,
-                title: action.description
+                description: action.value
             }
         default:
             return state;

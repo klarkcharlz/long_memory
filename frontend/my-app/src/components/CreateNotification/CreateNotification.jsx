@@ -1,55 +1,37 @@
-import React, {useState} from "react";
+import React from "react";
 import {connect} from "react-redux";
 
-import {getContent} from "../functions/api";
-import {SETTITLE, SETDESCRIPTION} from '../redux/types/createNotifications';
+import {getContent} from "../../functions/api";
+import {setTitle, setDescription} from '../../redux/СreateNotifications/actions'
+
 
 const createNotification = (title, description) => {
     console.log('Создано');
     console.log(title);
     console.log(description);
-    getContent();
+    //getContent();
 }
 
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps > ', state);
+    const {createNotificationsReducer} = state;
     return {
-        title: state.title,
-        description: state.description
+        title: createNotificationsReducer.title,
+        description: createNotificationsReducer.description
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setTitle: (event) => {
-            console.log('SETTITLE');
-            console.log(event.target.value);
-            const action = {
-                type: SETTITLE,
-                value: event.target.value
-            };
-            dispatch(action);
-        },
-        setDescription: (event) => {
-            console.log('SETDESCRIPTION');
-            console.log(event.target.value);
-            const action = {
-                type: SETDESCRIPTION,
-                value: event.target.value
-            };
-            dispatch(action);
-        }
+        setTitle: (event) => dispatch(setTitle(event)),
+        setDescription: (event) => dispatch(setDescription(event))
     }
 }
 
 
 const CreateNotification = (props) => {
-    // const [title, setTitle] = useState("React хуки.");
-    // const [description, setDescription] = useState("Изучил хуки useState и useEffect.");
-    console.log('Render props > ', props)
     return (
         <div>
-            <form action="" method="POST">
+            <form action="frontend/my-app/src/components/CreateNotification/CreateNotification" method="POST">
                 <label> Тема(ы)
                     <input type="text"
                            name="title"

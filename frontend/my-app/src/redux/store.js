@@ -1,28 +1,6 @@
 import {createStore} from 'redux';
+import {rootReducer} from "./rootReducer";
 
-const initialState = {
-    title: "React хуки.",
-    description: "Изучил хуки useState и useEffect."
-}
-
-const reducer = (state = initialState, action) => {
-    console.log("reducer > ", action);
-    switch (action.type){
-        case 'SETTITLE':
-            return {
-                ...state,
-                title: action.value
-            }
-        case 'SETDESCRIPTION':
-            return {
-                ...state,
-                title: action.description
-            }
-        default:
-            return state;
-    }
-}
-
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 export default store;

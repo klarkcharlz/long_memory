@@ -7,6 +7,7 @@ const Menu = () => {
             <ul>
                 <li><Link to='/main'>О проекте.</Link></li>
                 <li><Link to='/create_notification'>Создать напоминание.</Link></li>
+                <li><Link to='/notifications_list'>Активные напоминания.</Link></li>
             </ul>
         </nav>
     )
