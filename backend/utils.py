@@ -1,5 +1,6 @@
+from datetime import date, datetime, timedelta
+
 from flask.json import JSONEncoder
-from datetime import date
 
 
 class CustomJSONEncoder(JSONEncoder):
@@ -13,3 +14,8 @@ class CustomJSONEncoder(JSONEncoder):
         else:
             return list(iterable)
         return JSONEncoder.default(self, obj)
+
+
+def get_first_date():
+    first_date = datetime.now().date() + timedelta(days=1)
+    return first_date

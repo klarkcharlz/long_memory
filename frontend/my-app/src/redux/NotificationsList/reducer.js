@@ -1,4 +1,4 @@
-import {GETNOTIFICATIONS, SETNOTIFICATIONS} from './types'
+import {SETNOTIFICATIONS} from './types'
 
 
 const testNotifications = {
@@ -15,10 +15,6 @@ const initialState = {
 
 export const notificationsListReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GETNOTIFICATIONS:
-            return {
-                ...state
-            }
         case SETNOTIFICATIONS:
             return {
                 ...state,

@@ -11,8 +11,8 @@ function getContent(dispatch) {
         }).catch(error => console.error(error))
 }
 
-async function setData(data) {
-    await axios.post(`http://127.0.0.1:5000`, {"data": 'data'})
+function setData(data) {
+    axios.post(`http://127.0.0.1:5000`, data)
         .then(response => {
             console.log(response.data);
         }).catch(error => console.error(error))

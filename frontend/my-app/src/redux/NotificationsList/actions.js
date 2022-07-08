@@ -1,17 +1,10 @@
-import {GETNOTIFICATIONS, SETNOTIFICATIONS} from './types'
+import {SETNOTIFICATIONS} from './types'
 
-
-export const getNotifications = () => {
-    return {
-        type: GETNOTIFICATIONS
-    };
-}
 
 export const setNotifications = (notifications) => {
-    const data =  {
+    return {
         type: SETNOTIFICATIONS,
         notifications
-    };
-    return data;
+    }
 }
 

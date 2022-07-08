@@ -1,8 +1,6 @@
 import React from "react";
 
 import {useDispatch, useSelector} from "react-redux";
-import {getNotifications, setNotifications} from '../../redux/NotificationsList/actions';
-
 import {getContent} from '../../functions/api'
 
 
@@ -18,11 +16,10 @@ const Notification = ({notification}) => {
 }
 
 
-const NotificationList = (props) => {
+const NotificationList = () => {
     const dispatch = useDispatch();
     const getNotifications_ = () => {
         getContent(dispatch);
-        // dispatch(getNotifications())
     }
     const notifications = useSelector(state => {
         const {notificationsListReducer} = state;

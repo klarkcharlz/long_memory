@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import {getContent} from "../../functions/api";
+import {setData} from "../../functions/api";
 import {setTitle, setDescription} from '../../redux/СreateNotifications/actions'
 
 
@@ -9,7 +9,11 @@ const createNotification = (title, description) => {
     console.log('Создано');
     console.log(title);
     console.log(description);
-    //getContent();
+    const data = {
+        title,
+        description
+    }
+    setData(data);
 }
 
 const mapStateToProps = (state) => {
