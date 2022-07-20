@@ -4,3 +4,4 @@ venv
 __pycache__
 .idea
 try.py
+*.DS_Store
