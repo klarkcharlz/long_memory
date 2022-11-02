@@ -4,3 +4,6 @@ __pycache__
 .idea
 try.py
 *.DS_Store
+/problem.txt
+migrations/
+postgresql/

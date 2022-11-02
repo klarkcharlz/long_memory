@@ -7,6 +7,9 @@ import Menu from "./components/Menu/Menu";
 import NotFound from "./components/NotFound/NotFound";
 import CreateNotification from "./components/CreateNotification/CreateNotification";
 import NotificationList from "./components/NotificationsList/NotificationsList";
+import Registration from "./components/Registration/Registration";
+import Authorization from "./components/Authorization/Authorization";
+import Logout from './components/Logout/Logout';
 
 export default function App() {
     return (
@@ -27,6 +30,18 @@ export default function App() {
                         <Route
                             path="/notifications_list"
                             element={<NotificationList/>}
+                        />
+                        <Route
+                            path="/registration"
+                            element={<Registration/>}
+                        />
+                        <Route
+                            path="/authorization"
+                            element={<Authorization/>}
+                        />
+                        <Route
+                            path="/logout"
+                            element={<Logout/>}
                         />
                         <Route
                             path="*"

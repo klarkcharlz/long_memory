@@ -1,11 +1,11 @@
-import React from "react";
-import {connect} from "react-redux";
+import React, {useState} from "react";
+// import {connect} from "react-redux";
+import {createNotification} from "../../functions/api";
+// import {setTitle, setDescription} from '../../redux/СreateNotifications/actions'
+import useUserContext from '../../hooks/useUserContext';
 
-import {setData} from "../../functions/api";
-import {setTitle, setDescription} from '../../redux/СreateNotifications/actions'
 
-
-const createNotification = (title, description) => {
+const createNotification_ = (title, description, authToken, userId) => {
     console.log('Создано');
     console.log(title);
     console.log(description);
@@ -13,35 +13,41 @@ const createNotification = (title, description) => {
         title,
         description
     }
-    setData(data);
+    createNotification(data, authToken, userId);
 }
 
-const mapStateToProps = (state) => {
-    const {createNotificationsReducer} = state;
-    return {
-        title: createNotificationsReducer.title,
-        description: createNotificationsReducer.description
-    }
-}
+// const mapStateToProps = (state) => {
+//     const {createNotificationsReducer} = state;
+//     return {
+//         title: createNotificationsReducer.title,
+//         description: createNotificationsReducer.description
+//     }
+// }
+//
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         setTitle: (event) => dispatch(setTitle(event)),
+//         setDescription: (event) => dispatch(setDescription(event))
+//     }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setTitle: (event) => dispatch(setTitle(event)),
-        setDescription: (event) => dispatch(setDescription(event))
-    }
-}
 
+const CreateNotification = () => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [authToken, userId] = useUserContext();
 
-const CreateNotification = (props) => {
     return (
         <div>
-            <form action="frontend/my-app/src/components/CreateNotification/CreateNotification" method="POST">
+            <form>
                 <label> Тема(ы)
                     <input type="text"
                            name="title"
-                           value={props.title}
+                           // value={props.title}
+                           value={title}
                            onChange={(event) => {
-                               props.setTitle(event);
+                               // props.setTitle(event);
+                               setTitle(event.target.value);
                            }}
                     />
                 </label>
@@ -49,15 +55,17 @@ const CreateNotification = (props) => {
                 <label> Описание
                     <textarea
                         name="description"
-                        value={props.description}
+                        //value={props.description}
+                        value={description}
                         onChange={(event) => {
-                            props.setDescription(event);
+                            // props.setDescription(event);
+                            setDescription(event.target.value);
                         }}
                     />
                 </label>
                 <br/>
                 <button type="button" onClick={() => {
-                    createNotification(props.title, props.description);
+                    createNotification_(title, description, authToken, userId);
                 }}>Создать
                 </button>
             </form>
@@ -65,5 +73,5 @@ const CreateNotification = (props) => {
     )
 }
 
-// export default CreateNotification;
-export default connect(mapStateToProps, mapDispatchToProps)(CreateNotification);
+export default CreateNotification;
+// export default connect(mapStateToProps, mapDispatchToProps)(CreateNotification);

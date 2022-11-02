@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 
-import {useDispatch, useSelector} from "react-redux";
-import {getContent} from '../../functions/api'
+// import {useDispatch, useSelector} from "react-redux";
+import {getNotifications} from '../../functions/api'
+import useUserContext from "../../hooks/useUserContext";
 
 
 const Notification = ({notification}) => {
@@ -17,14 +18,19 @@ const Notification = ({notification}) => {
 
 
 const NotificationList = () => {
-    const dispatch = useDispatch();
-    const getNotifications_ = () => {
-        getContent(dispatch);
-    }
-    const notifications = useSelector(state => {
-        const {notificationsListReducer} = state;
-        return notificationsListReducer.notifications;
-    });
+    // const dispatch = useDispatch();
+    // const getNotifications_ = () => {
+    //     getNotifications(dispatch);
+    // }
+    // const notifications = useSelector(state => {
+    //     const {notificationsListReducer} = state;
+    //     return notificationsListReducer.notifications;
+    // });
+
+    const [notifications, setNotifications] = useState([]);
+    const [authToken, userId] = useUserContext();
+    console.log(authToken);
+    console.log(userId);
 
     return (
         <div>
@@ -36,7 +42,10 @@ const NotificationList = () => {
             }
             <button type='button' onClick={(e) => {
                 e.preventDefault();
-                getNotifications_();
+                // getNotifications_();
+                getNotifications( (newNotifications) => {
+                    setNotifications(newNotifications);
+                }, authToken, userId)
             }}>Загрузить напоминания</button>
         </div>
     )
